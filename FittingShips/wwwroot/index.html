@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Hello, World!</title>
+    <script>
+        if ('serviceWorker' in navigator) {
+            console.log("Service workers are supported.");
+            window.addEventListener('load', function () {
+                console.log("Window load fired.");
+                navigator.serviceWorker.register('/service-worker.js', { 'scope': 'https://localhost:5001/'}).then(function (registration) {
+                    // Registration was successful
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, function (err) {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+    </script>
+    <script src="scripts/test.js"></script>
+</head>
+<body>
+    <p>This is a test.</p>
+    <img src="images/test.png" />
+</body>
+</html>
