@@ -1,0 +1,25 @@
+{
+  "name": "fittingships",
+  "version": "0.0.1",
+  "description": "A web app that allows you to design EVE Online ships.",
+  "main": "index.js",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-react-app": "^3.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test",
+    "watch": "babel --watch ./wwwroot/components --out-dir ./wwwroot/scripts/components --presets react-app/prod"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JessieArr/FittingShips.git"
+  },
+  "author": "Jessie Arr",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JessieArr/FittingShips/issues"
+  },
+  "homepage": "https://github.com/JessieArr/FittingShips#readme"
+}
