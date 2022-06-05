@@ -19,12 +19,20 @@ self.addEventListener('fetch', function (event) {
     console.log("Fetch event fired: " + event.request.url);
     event.respondWith(
         caches.open(CACHE_NAME).then(function (cache) {
-          return cache.match(event.request).then(function (response) {
-            var fetchPromise = fetch(event.request)
-                .then(function (networkResponse) {
-                    cache.put(event.request, networkResponse.clone());
-                    return networkResponse;
-                })
+            console.log(event);
+            if (event.request.url.includes("/browserLinkSignalR/"))
+            {
+                return fetch(event.request);
+            }
+            return cache.match(event.request, { ignoreSearch: true })
+                .then(function (response) {
+                    var fetchPromise = fetch(event.request)
+                    .then(function (networkResponse) {
+                        if (event.request.method == "GET") {
+                            cache.put(event.request, networkResponse.clone());
+                        }
+                        return networkResponse;
+                    })
                 .catch(error => 
                 {
                     console.log("No new content found for " + event.request.url)
